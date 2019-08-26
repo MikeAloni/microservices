@@ -41,7 +41,7 @@ Resources:
               #!/bin/bash -v
               echo $(date) > newfile.txt
 
-              git clone https://github.com/devopsdemoapps/microservices.git
+              git clone https://github.com/MikeAloni/microservices.git
               cd microservices/
 
               apt udpate
