@@ -1,0 +1,54 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: AWS EC2 Launch
+Parameters:
+
+  KeyName:
+    Description: Name of an existing EC2 KeyPair to enable SSH access to the instance
+    Type: AWS::EC2::KeyPair::KeyName
+    Default: "mike-key2" 
+  
+  InstanceType:
+    Type: String
+    Default: "t2.micro"
+
+  AmiID:
+    Type: String 
+    Default: "ami-0111e8c43a763eb71"
+
+  InstanceSecurityGroup: 
+    Type: List<AWS::EC2::SecurityGroup::Id>
+    Default: "sg-0a7459a05617c6c2f"
+
+  Arch:
+    Type: String 
+    Default: "HVM64"
+
+Resources:
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType:
+        Ref: InstanceType
+      SecurityGroupIds:
+        Ref: InstanceSecurityGroup
+      KeyName:
+        Ref: KeyName
+      ImageId:
+        Ref: AmiID
+      UserData:
+        Fn::Base64:
+          !Sub |
+              #!/bin/bash -v
+              echo $(date) > newfile.txt
+
+              git clone https://github.com/devopsdemoapps/microservices.git
+              cd microservices/
+
+              apt udpate
+
+              apt install make
+
+              apt-get install virtualenv
+
+              sudo apt install python2.7
+
