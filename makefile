@@ -1,6 +1,3 @@
-# Microservices Project Make File
-# author: umer mansoor
-
 VIRTUALENV = $(shell which virtualenv)
 
 clean: shutdown
@@ -25,4 +22,3 @@ shutdown:
 	ps -ef | grep "services/showtimes.py" | grep -v grep | awk '{print $$2}' | xargs --no-run-if-empty kill  
 	ps -ef | grep "services/bookings.py" | grep -v grep | awk '{print $$2}' | xargs --no-run-if-empty kill  
 	ps -ef | grep "services/user.py" | grep -v grep | awk '{print $$2}' | xargs --no-run-if-empty kill  
-
