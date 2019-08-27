@@ -44,11 +44,17 @@ Resources:
               git clone https://github.com/MikeAloni/microservices.git
               cd microservices/
 
-              apt udpate
+              apt-get update -y
 
-              apt install make
+              apt-get install make -y
 
-              apt-get install virtualenv
+              apt-get install virtualenv -y
 
-              sudo apt install python2.7
+              apt-get install python2.7 -y
+
+              make install
+
+              make launch
+
+
 

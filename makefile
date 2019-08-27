@@ -8,7 +8,7 @@ clean: shutdown
 	rm -fr venv
 
 venv:
-	$(VIRTUALENV) venv
+	$(VIRTUALENV) venv --python=python2.7
 
 install: clean venv
 	. venv/bin/activate; python setup.py install
